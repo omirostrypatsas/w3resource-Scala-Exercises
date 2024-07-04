@@ -17,4 +17,15 @@ object FirstHalf extends App{
   println(sum(1,3))
   println(sum(2,2))
 
+  // Exercise 3.
+
+  def absoluteDifference(number: Int): Int = {
+    val absDiff: Int = number - 51
+    if (absDiff > 0) number * 3
+    else absDiff.abs
+  }
+
+  println(absoluteDifference(52))
+  println(absoluteDifference(50))
+
 }
