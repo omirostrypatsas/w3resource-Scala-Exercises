@@ -28,4 +28,14 @@ object FirstHalf extends App{
   println(absoluteDifference(52))
   println(absoluteDifference(50))
 
+  def checker(no1: Int, no2: Int): Boolean = {
+    if ((no1 == 30) || (no2 == 30) || (no1 + no2 == 30)) true
+    else false
+  }
+
+  println(checker(30, 35))
+  println(checker(40, 30))
+  println(checker(20, 10))
+  println(checker(5, 3))
+
 }
