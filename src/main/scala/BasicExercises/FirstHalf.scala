@@ -43,7 +43,7 @@ object FirstHalf extends App{
   // Exercise 5.
 
   def checkerVol2(num: Int): Boolean = {
-    if ((num >= 100 & num <= 120) || (num <= 300 & num >= 280)) true
+    if ((num >= 100 && num <= 120) || (num <= 300 && num >= 280)) true
     else false
   }
 
@@ -74,7 +74,7 @@ object FirstHalf extends App{
   // Exercise 8.
 
   def lettersSwap(word: String): String = {
-    val len: Int = word.size
+    val len: Int = word.length
     if (len <= 1) word
     else word(len - 1) + word.drop(1).init + word(0)
   }
@@ -85,7 +85,7 @@ object FirstHalf extends App{
   println(lettersSwap("p"))
 
   def lettersSwapVol2(word: String): String = {
-    val len: Int = word.size
+    val len: Int = word.length
     if (len <= 1) word
     else word(len - 1) + word.substring(1, len - 1) + word(0)
   }
@@ -98,7 +98,7 @@ object FirstHalf extends App{
   // Exercise 9.
 
   def copyMethod(word: String): String = {
-    if (word.size <= 2) {
+    if (word.length <= 2) {
       word
     } else {
       val first2characters: String = word.substring(0, 2)
@@ -112,7 +112,7 @@ object FirstHalf extends App{
   // Exercise 10.
 
   def lastChar(word: String): String = {
-    val len: Int = word.size
+    val len: Int = word.length
     if (len <= 0) word
     else word(len - 1) + word.drop(0) + word(len - 1)
   }
@@ -121,5 +121,102 @@ object FirstHalf extends App{
   println(lastChar("hello"))
   println(lastChar(""))
   println(lastChar("e"))
+
+  // Exercise 11.
+
+  def dividedBy3or7(num: Int): Boolean = {
+    if ((num % 3 ==0) || (num%7 == 0)) true
+    else false
+  }
+
+  println(dividedBy3or7(33))
+  println(dividedBy3or7(35))
+  println(dividedBy3or7(21))
+  println(dividedBy3or7(46))
+
+  // Exercise 12.
+
+  def threeCharacterManipulator(word: String): String = {
+    val len: Int = word.length
+    if (len < 3) {
+      word
+    } else {
+      val first3characters: String = word.substring(0,3)
+      first3characters + word + first3characters
+    }
+  }
+
+  println(threeCharacterManipulator("ifword"))
+  println(threeCharacterManipulator("hello"))
+  println(threeCharacterManipulator(" "))
+  println(threeCharacterManipulator("e"))
+
+  // Exercise 13.
+
+  def wordStartsWith(word: String): Boolean = {
+    word.startsWith("Sc")
+  }
+
+  println(wordStartsWith("ifword"))
+  println(wordStartsWith("Scala"))
+
+  // Exercise 14.
+
+  def temperatureChecker(temp1: Double, temp2: Double): Boolean = {
+    if ((temp1 < 0 && temp2 > 100) || (temp1 > 100 && temp2 < 0)) true
+    else false
+  }
+
+  println(temperatureChecker(10, 30))
+  println(temperatureChecker(0, 101))
+  println(temperatureChecker(-5.5, 30))
+  println(temperatureChecker(-15, 111.11))
+  println(temperatureChecker(200.35, -20.58))
+
+  // Exercise 15.
+
+  def numberChecker(int1: Int, int2: Int): Boolean = {
+    if ((int1 >= 100 && int1 <= 200) || (int2 >= 100 && int2 <= 200)) true
+    else false
+  }
+
+  println(numberChecker(20, 30))
+  println(numberChecker(120, 30))
+  println(numberChecker(20, 130))
+  println(numberChecker(120, 130))
+
+  // Exercise 16.
+
+  def numberCheckerVol2(int1: Int, int2: Int, int3: Int): Boolean = {
+    if ((int1 >= 20 && int1 <= 50) || (int2 >= 20 && int2 <= 50) || (int3 >= 20 && int3 <= 50)) true
+    else false
+  }
+
+  println(numberCheckerVol2(10, 300, 150))
+  println(numberCheckerVol2(10, 30, 60))
+  println(numberCheckerVol2(40, 2, 89))
+  println(numberCheckerVol2(1, 3, 43))
+
+  // Exercise 17.
+
+  def numberCheckerVol3(int1: Int, int2: Int): Boolean = {
+    if ((int1 <= 20 || int2 >= 50) || (int2 <= 20 || int1 >= 50)) true
+    else false
+  }
+
+  println(numberCheckerVol3(20, 84))
+  println(numberCheckerVol3(14, 50))
+  println(numberCheckerVol3(11, 45))
+  println(numberCheckerVol3(25, 40))
+
+  // Exercise 18.
+
+  def ytChecker(word: String): String = {
+    if (word.drop(1).startsWith("yt")) word(0) + word.drop(2)
+    else word
+  }
+
+  println(ytChecker("byte"))
+  println(ytChecker("Scala"))
 
 }
