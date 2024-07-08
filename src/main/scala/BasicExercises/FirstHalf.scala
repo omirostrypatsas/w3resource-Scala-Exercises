@@ -219,4 +219,82 @@ object FirstHalf extends App{
   println(ytChecker("byte"))
   println(ytChecker("Scala"))
 
+  // Exercise 19.
+
+  def largerNumber(no1: Int, no2: Int, no3: Int): Int = {
+    List(no1, no2, no3).max
+  }
+
+  println(largerNumber(10, 300, 150))
+  println(largerNumber(10, 30, 6))
+  println(largerNumber(40, 2, 8))
+
+  // Exercise 20.
+
+  def distanceCalc(no1: Int, no2: Int): Int = {
+    val no1distance: Int = (no1 - 100).abs
+    val no2distance: Int = (no2 - 100).abs
+    if (no1distance < no2distance) {
+      no1
+    } else if (no2distance < no1distance) {
+      no2
+    } else {
+      0
+    }
+  }
+
+  println(distanceCalc(20, 120))
+  println(distanceCalc(120, 120))
+  println(distanceCalc(120, 20))
+
+  // Exercise 21.
+
+  def intervalChecker(no1: Int, no2: Int): Boolean = {
+    List(no1, no2).forall{n => n >= 40 && n<= 50} || List(no1, no2).forall{n => n >= 50 && n <= 60}
+  }
+
+  println(intervalChecker(20, 120))
+  println(intervalChecker(40, 50))
+  println(intervalChecker(50, 55))
+  println(intervalChecker(50, 30))
+  println(intervalChecker(20, 55))
+
+  // Exercise 22.
+
+  def intervalChecker2(no1: Int, no2: Int): Int = {
+    if ((no1 < 20 || no1 > 30) && (no2 < 20 || no2 > 30)) 0
+    else if ((no1 >= 20 && no1 <= 30) && (no2 < 20 || no2 > 30)) no1
+    else if ((no1 < 20 || no1 > 30) && (no2 >= 20 && no2 <= 30)) no2
+    else  {
+      List(no1, no2).max
+    }
+  }
+
+  println(intervalChecker2(20, 120))
+  println(intervalChecker2(40, 30))
+  println(intervalChecker2(23, 27))
+  println(intervalChecker2(25, 21))
+
+  def intervalChecker3(no1: Int, no2: Int): Int = {
+    val maxChecker: Int = List(no1, no2).max
+    if (maxChecker >= 20 && maxChecker <= 30) maxChecker
+    else 0
+  }
+
+  println(intervalChecker3(20, 120))
+  println(intervalChecker3(40, 30))
+  println(intervalChecker3(23, 27))
+  println(intervalChecker3(25, 21))
+
+  // Exercise 23.
+
+//  def stringEncounter(word: String): Boolean = {
+//    val numOfEncounters: Int = word.count{n => n == "o"}
+//    if (numOfEncounters >= 2 && numOfEncounters <= 4) true
+//    else false
+//  }
+//
+//  println(stringEncounter("Omiros"))
+//  println(stringEncounter("omiros"))
+
 }
