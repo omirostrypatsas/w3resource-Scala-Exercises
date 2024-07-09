@@ -288,13 +288,52 @@ object FirstHalf extends App{
 
   // Exercise 23.
 
-//  def stringEncounter(word: String): Boolean = {
-//    val numOfEncounters: Int = word.count{n => n == "o"}
-//    if (numOfEncounters >= 2 && numOfEncounters <= 4) true
-//    else false
-//  }
-//
-//  println(stringEncounter("Omiros"))
-//  println(stringEncounter("omiros"))
+  def stringEncounter(word: String): Boolean = {
+    val numOfEncounters: Int = word.count(n => n == 'o')
+    numOfEncounters >= 2 && numOfEncounters <= 4
+  }
+
+  println(stringEncounter("Omiros"))
+  println(stringEncounter("omiros"))
+  println(stringEncounter("gooooal"))
+  println(stringEncounter("AAAAAA"))
+  println(stringEncounter("coolio"))
+  println(stringEncounter("gooooal"))
+
+  // Exercise 24.
+  println("Exercise 24")
+
+  def lastDigitCheck(num1: Int, num2: Int): Boolean = {
+    (num1 % 10) == (num2 % 10)
+  }
+
+  println(lastDigitCheck(23, 30))
+  println(lastDigitCheck(40, 30))
+  println(lastDigitCheck(3, 3))
+  println(lastDigitCheck(2, 7))
+  println(lastDigitCheck(112, 734))
+
+  // Exercise 25.
+
+  def upperCase(word: String): String = {
+    val len: Int = word.length
+    if (len < 4) word.toUpperCase
+    else word.take(len -4) + word.drop(len -4).toUpperCase
+  }
+
+  println(upperCase("hey"))
+  println(upperCase("scala"))
+  println(upperCase("alright"))
+
+  // Exercise 26.
+
+  def copyFunction(word: String, n: Int): String = {
+    word.repeat(n)
+  }
+
+  println(copyFunction("hey", 2))
+  println(copyFunction("scala", 3))
+  println(copyFunction("hey", 0))
+  println(copyFunction("scala", 1))
 
 }
