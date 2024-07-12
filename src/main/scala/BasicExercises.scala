@@ -1,6 +1,4 @@
-package BasicExercises
-
-object FirstHalf extends App{
+object BasicExercises extends App{
 
   // Exercise 1.
 
