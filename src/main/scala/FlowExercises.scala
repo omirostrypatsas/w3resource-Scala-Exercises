@@ -80,15 +80,15 @@ object FlowExercises extends App {
 
   // Exercise 7.
 
-//  def summation(array: Array): Int = {
-//    def helper(position: Int): Int = {
-//      if (position < array.length) array(position) + array(helper(position + 1))
-//      else
-//    }
-//    helper(0)
-//  }
-//
-//  println(summation(Array[1, 2, 3, 4, 5, 6]))
-//  println(summation(Array[0, 2, 43, 4, -5, 16]))
+  def summation(array: Array[Int]): Int = {
+    var sum: Int = 0
+    for (number <- array) {
+      sum += number
+    }
+    sum
+  }
+
+  println(summation(Array(1, 2, 3, 4, 5, 6)))
+  println(summation(Array(0, 2, 43, 4, -5, 16)))
 
 }
