@@ -91,4 +91,15 @@ object FlowExercises extends App {
   println(summation(Array(1, 2, 3, 4, 5, 6)))
   println(summation(Array(0, 2, 43, 4, -5, 16)))
 
+  // Exercise 8.
+
+  def palindrome(word: String): Boolean = {
+    word == word.reverse
+  }
+
+  println(palindrome("hello"))
+  println(palindrome("noon"))
+  println(palindrome("wow"))
+
+
 }
