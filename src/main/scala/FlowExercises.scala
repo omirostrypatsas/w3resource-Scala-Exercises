@@ -102,4 +102,32 @@ object FlowExercises extends App {
   println(palindrome("wow"))
 
 
+  def noOfVowels(word: String): Int = {
+    var count: Int = 0
+    for (ch <- word) {
+      if (isVowel(ch)) {
+        count += 1
+      }
+    }
+    count
+  }
+
+  def countVowelsMatch(word: String): Int = {
+    word.toLowerCase match {
+      case "" => 0
+      case s  => s.count(isVowel)
+    }
+  }
+
+  def isVowel(ch: Char): Boolean = {
+    ch.toLower match {
+      case 'a' | 'e' | 'i' | 'o' | 'u' => true
+      case _ => false
+    }
+  }
+
+  println("Number of voewls is: " + noOfVowels("lol"))
+  println("Number of voewls is: " + noOfVowels("scala"))
+  println("Number of voewls is: " + noOfVowels("programming"))
+  println("Number of voewls is: " + noOfVowels("brb"))
 }
