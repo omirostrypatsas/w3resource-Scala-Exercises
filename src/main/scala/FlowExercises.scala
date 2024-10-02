@@ -126,8 +126,38 @@ object FlowExercises extends App {
     }
   }
 
-  println("Number of voewls is: " + noOfVowels("lol"))
-  println("Number of voewls is: " + noOfVowels("scala"))
-  println("Number of voewls is: " + noOfVowels("programming"))
-  println("Number of voewls is: " + noOfVowels("brb"))
+  println("Number of vowels is: " + noOfVowels("lol"))
+  println("Number of vowels is: " + noOfVowels("scala"))
+  println("Number of vowels is: " + noOfVowels("programming"))
+  println("Number of vowels is: " + noOfVowels("brb"))
+
+  // Exercise 10.
+
+  def findLargestElement(array: Array[Int]): Option[Int] = {
+    if(array.length != 0) {
+      var largestElement: Int = array(0)
+      array.length match {
+        case 1 => Some(largestElement)
+        case _ =>
+          for (number <- array) {
+            if(number > largestElement) largestElement = number
+            largestElement
+          }
+          Some(largestElement)
+      }
+    } else {
+    array.length match {
+      case 0 => None
+    }
+    }
+  }
+
+  def outputLargestElement(array: Array[Int]) = findLargestElement(array) match {
+    case Some(number) => number
+    case None => "Empty array, no largest element present"
+  }
+
+  println(outputLargestElement(Array()))
+  println(outputLargestElement(Array(1)))
+  println(outputLargestElement(Array(1,2, 10, 5, 12, 7, 3)))
 }
