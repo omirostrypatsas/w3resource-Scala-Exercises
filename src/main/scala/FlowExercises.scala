@@ -101,6 +101,7 @@ object FlowExercises extends App {
   println(palindrome("noon"))
   println(palindrome("wow"))
 
+  // Exercise 9.
 
   def noOfVowels(word: String): Int = {
     var count: Int = 0
