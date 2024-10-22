@@ -45,4 +45,47 @@ object StringExercises extends App {
 
   stringConcatenation("Scala Exercises and ", "Python Exercises")
 
+  // Exercise 5.
+
+  def isStringContained(string1: String, string2: String): Unit = {
+    println(s"Original String: $string1")
+    println(s"Specified sequence of char values: $string2")
+    println("Test if the said string contains the specified sequence of char values!")
+    if(string1.contains(string2)) {
+      println("true")
+    } else {
+      println("false")
+    }
+  }
+
+  isStringContained("Scala Exercises and Python Exercises", "and")
+  isStringContained("Scala Exercises and PHP Exercises", "Python")
+
+  // Exercise 6.
+
+  def stringFromArray(characterArray: Array[Char], index: Int, length: Int): Unit = {
+    val newString: String = String.copyValueOf(characterArray, index, length)
+    println("The book contains " + newString + " pages")
+  }
+
+  stringFromArray(Array('1', '2', '3', '4', '5', '6'), 2, 3)
+
+  // Exercise 7.
+
+  def stringEnds(string1: String, string2: String): Unit = {
+    println(s"'$string1' ends with '$string2'? ${string1.endsWith(string2)}")
+  }
+
+  stringEnds("Python Exercises", "se")
+  stringEnds("Python Exercise", "se")
+
+  // Exercise 8.
+
+  def isStringEqual(string1: String, string2: String): Unit = {
+    println(s"'$string1' equals '$string2'? ${string1.toLowerCase.equals(string2.toLowerCase)}")
+  }
+
+  isStringEqual("Stephen Edwin King", "Stephen Edwin  King")
+  isStringEqual("Stephen Edwin King", "Stephen edwin king")
+
 }
