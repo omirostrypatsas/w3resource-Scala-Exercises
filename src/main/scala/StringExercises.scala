@@ -82,10 +82,59 @@ object StringExercises extends App {
   // Exercise 8.
 
   def isStringEqual(string1: String, string2: String): Unit = {
-    println(s"'$string1' equals '$string2'? ${string1.toLowerCase.equals(string2.toLowerCase)}")
+    println(s"'$string1' equals '$string2'? ${string1.equals(string2)}")
   }
 
   isStringEqual("Stephen Edwin King", "Stephen Edwin  King")
-  isStringEqual("Stephen Edwin King", "Stephen edwin king")
+  isStringEqual("Stephen Edwin King", "Stephen Edwin King")
+
+  // Exercise 9.
+
+  def isStringEqualIgnoringCase(string1: String, string2: String): Unit = {
+    println(s"'$string1' equals '$string2'? ${string1.toLowerCase.equals(string2.toLowerCase)}")
+  }
+
+  isStringEqualIgnoringCase("Stephen Edwin King", "Stephen Edwin  King")
+  isStringEqualIgnoringCase("Stephen Edwin King", "Stephen edwin king")
+
+  // Exercise 10.
+
+  def charReplace(string: String, oldChar: String, newChar: String): Unit = {
+    println(s"Original string: $string")
+    println(s"New String: ${string.replace(oldChar, newChar)}")
+  }
+
+  charReplace("The quick brown fox jumps over the lazy dog.", "d", "f")
+
+  // Exercise 11.
+
+  def createSubstring(string: String, startPosition: Int, endPosition: Int): Unit = {
+    println(s"Original = $string")
+    println(s"From said string, substring between two positions ($startPosition, $endPosition) = ${string.substring(startPosition, endPosition)}")
+  }
+
+  createSubstring("The quick brown fox jumps over the lazy dog.", 10, 26)
+
+  // Exercise 12.
+
+  def lowerAndUpperCase(string: String): Unit = {
+    println(s"Original String: ${string}")
+    println(s"String in lower case: ${string.toLowerCase}")
+    println(s"String in uppercase: ${string.toUpperCase}")
+  }
+
+  lowerAndUpperCase("The Quick BroWn FoX!")
+
+  // Exercise 13.
+
+  def trimmer(string: String): Unit = {
+    println(s"Original String:-$string")
+    println(s"New String:${string.trim}")
+  }
+
+  trimmer(" Scala Exercises")
+  trimmer("Scala Exercises ")
+  trimmer(" Scala Exercises ")
+  trimmer("Scala Exercises")
 
 }
