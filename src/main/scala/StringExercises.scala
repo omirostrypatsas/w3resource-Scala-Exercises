@@ -137,4 +137,41 @@ object StringExercises extends App {
   trimmer(" Scala Exercises ")
   trimmer("Scala Exercises")
 
+  // Exercise 15.
+
+  def maxChar(string: String): Unit = {
+    println(s"The given string is: $string")
+    println(s"Maximum occurring character of the said string is: ${string.max}")
+  }
+
+  maxChar("test string")
+  maxChar("Scala")
+
+  // Exercise 18.
+
+  def rotations(string1: String, string2: String): Unit = {
+    println(s"The given strings are: $string1 and $string2")
+    val string1twice: String = string1 + string2
+    println(s"The concatination of 1st string twice is: $string1twice")
+    if (string1twice.contains(string2)) println(s"The second string $string2 exists in the new string.\n Strings are rotations of each other")
+    else println(s"The second string $string2 doesn't exist in the new string.\n Strings are not rotations of each other")
+  }
+
+  rotations("ABACD", "CDABA")
+
+  // Exercise 19.
+
+  def stringConcat(string1: String, string2: String): Unit = {
+    println(s"The given strings are: $string1 and $string2")
+    if (string1(string1.length - 1) == string2(0)) {
+      val concatStringWithoutDuplicate: String = string1.substring(0, string1.length - 1).appendedAll(string2)
+      println(s"The string after concatination is: $concatStringWithoutDuplicate")
+    } else {
+      println(s"The string after concatination is: ${string1 + string2}")
+    }
+  }
+
+  stringConcat("food", "door")
+  stringConcat("dog", "food")
+
 }
