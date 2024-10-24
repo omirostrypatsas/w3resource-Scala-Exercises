@@ -174,4 +174,71 @@ object StringExercises extends App {
   stringConcat("food", "door")
   stringConcat("dog", "food")
 
+  // Exercise 20.
+
+  def reverseLastTwoChars(string: String): Unit = {
+    println(s"The given string is: $string")
+    if (string.length >= 2) {
+      val newString: String = string.substring(0, string.length - 2) + string.substring(string.length - 2, string.length).reverse
+      println(s"The string after swap last two characters are: $newString")
+    } else {
+      println(s"The string $string is less than 2 characters")
+    }
+  }
+
+  reverseLastTwoChars("Scala")
+  reverseLastTwoChars("Hi")
+  reverseLastTwoChars("d")
+
+  // Exercise 21.
+
+  def twoLastCharsCheck(string1: String, string2: String): Unit = {
+    println(s"The given string is: $string1")
+    if (string2.length == 2) {
+      if (string1.endsWith(string2)) println(s"The string containing ng at last: true")
+      else println(s"The string containing ng at last: false")
+    } else {
+      println("The string is not of length 2")
+    }
+  }
+
+  twoLastCharsCheck("String", "ng")
+  twoLastCharsCheck("String", "gn")
+
+  // Exercise 22.
+
+  def appendTwoStrings(string1: String, string2: String): Unit = {
+    println(s"The given strings are: $string1 and $string2")
+    val difference: Int =  string1.length - string2.length
+    if (difference == 0) {
+      println(s"The new string is: ${string1 + string2}")
+    }
+    else if (difference > 0) {
+      val appendedString1: String = string1.substring(difference) + string2
+      println(s"The new string is: $appendedString1")
+    } else {
+      val appendedString2: String = string1 + string2.substring(-difference)
+      println(s"The new string is: $appendedString2")
+    }
+  }
+
+  appendTwoStrings("Welcome", "home")
+  appendTwoStrings("Scala", "Python")
+
+  // Exercise 23.
+
+  def firstAndLastChars(string: String, num: Int): Unit = {
+    println(s"The given strings is: $string")
+    println(s"The given numbers is: $num")
+    if (num * 2 > string.length + 1) {
+      println("The given string cannot be modified")
+    } else {
+      val newString: String = string.substring(0, num) + string.substring(string.length - num)
+      println(s"The new string is: $newString")
+    }
+  }
+
+  firstAndLastChars("Welcome", 3)
+  firstAndLastChars("Scala programming", 4)
+
 }
