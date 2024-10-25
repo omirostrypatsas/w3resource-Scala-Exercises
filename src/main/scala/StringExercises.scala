@@ -241,4 +241,73 @@ object StringExercises extends App {
   firstAndLastChars("Welcome", 3)
   firstAndLastChars("Scala programming", 4)
 
+  // Exercises 24.
+
+  def twoFirstAndLastCharChecks(string: String): Boolean = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    if (len < 2) false
+    else if (string.substring(0, 2) == string.substring(len -2, len)) true
+    else false
+  }
+
+  println("If first two characters appear in the last! " + twoFirstAndLastCharChecks("educated"))
+  println("If first two characters appear in the last! " + twoFirstAndLastCharChecks("ABCDEFBA"))
+
+  // Exercise 25.
+
+  def firstAndLastChars(string: String): Unit = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    if (len <= 0) println("String cannot be checked")
+    else if (string.charAt(0) == string.charAt(len - 1)) println(s"The new string is: ${string.substring(1, len -1)}")
+    else println(s"The new string is: $string")
+  }
+
+  firstAndLastChars("testcricket")
+  firstAndLastChars("Scala")
+
+  // Exercise 26.
+
+  def firstTwoCharsCheck(string: String): Unit = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    if (len < 2) println("String cannot be checked")
+    else {
+      if (string.startsWith("gh")) {
+        println(s"The new string is: $string")
+      } else if (string(1).toString == "h") {
+        println(s"The new string is: ${string.substring(1)}")
+      } else if (string.startsWith("g")) {
+        println(s"The new string is: ${string.charAt(0) + string.substring(2)}")
+      } else {
+        println(s"The new string is: ${string.substring(2)}")
+      }
+    }
+  }
+
+  firstTwoCharsCheck("ghost")
+  firstTwoCharsCheck("photo")
+  firstTwoCharsCheck("goat")
+  firstTwoCharsCheck("Scala")
+
+  // Exercise 27.
+
+  def charRemoval(string: String, char: Char): Unit = {
+    println(s"The given strings is: $string, specified character is: $char")
+    val len: Int = string.length
+    if (len < 2) println("String cannot be checked")
+    else {
+      if (char == string.charAt(0) || char == string.charAt(1)) {
+        println(s"The new string is: ${string.replaceAll(char.toString, "")}")
+      } else {
+        println(s"The new string is: $string")
+      }
+    }
+  }
+
+  charRemoval("aacyte", "a".charAt(0))
+  charRemoval("bacyte", "a".charAt(0))
+  charRemoval("bbacyte", "a".charAt(0))
+
 }
