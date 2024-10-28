@@ -1,3 +1,5 @@
+import scala.annotation.tailrec
+
 object StringExercises extends App {
 
   // Exercise 1.
@@ -309,5 +311,64 @@ object StringExercises extends App {
   charRemoval("aacyte", "a".charAt(0))
   charRemoval("bacyte", "a".charAt(0))
   charRemoval("bbacyte", "a".charAt(0))
+
+  // Exercise 29.
+
+  def stringsExistsAtTheEnd(string1: String, string2: String): Boolean = {
+    println(s"The given strings are: $string1 and $string2")
+    val string1len: Int = string1.length
+    val string2len: Int = string2.length
+    if (string1len <= 0 || string2len <= 0) {
+      false
+    } else if (string1.contains(string2) && (string1.substring(string1len - string2len) == string2)) {
+        true
+    } else {
+      false
+    }
+  }
+
+  println("Is one string appears at the end of other? " + stringsExistsAtTheEnd("pqrxyz", "xyz"))
+  println("Is one string appears at the end of other? " + stringsExistsAtTheEnd("pqrxyz", "rxy"))
+  println("Is one string appears at the end of other? " + stringsExistsAtTheEnd("xyzpqr", "rxy"))
+
+  // Exercise 34.
+
+  def addStringsAndRepeat(string1: String, string2: String, num: Int): String = {
+    println(s"The given strings are: $string1 and $string2")
+    @tailrec
+    def stringConcat(new_word: String, repeat: Int): String = {
+      if (repeat == 0) new_word
+      else stringConcat(new_word + string1 + string2, repeat - 1)
+    }
+    if (num >= 1) stringConcat(string1 + string2, num - 1)
+    else "None"
+  }
+
+  println("The new string is: " + addStringsAndRepeat("try", "best", 3))
+  println("The new string is: " + addStringsAndRepeat("try", "best", 0))
+  println("The new string is: " + addStringsAndRepeat("try", "best", 1))
+
+  // Exercise 35.
+
+  def substringRep(string: String, noOfChars: Int, noOfRepetition: Int): String = {
+    println(s"The given strings is: $string")
+    if (noOfChars <= 0 || noOfRepetition <= 0) "Could not repeat the characters"
+    else {
+      val len: Int = string.length
+      val substring: String = string.substring(len - noOfChars)
+      @tailrec
+      def stringConcat(new_word: String, repeat: Int): String = {
+        if (repeat == 0) new_word
+        else stringConcat(new_word + substring, repeat - 1)
+      }
+      stringConcat(substring, noOfRepetition - 1)
+    }
+  }
+
+  println("The new string after repetition: " + substringRep("string", 3, 3))
+  println("The new string after repetition: " + substringRep("string", 0, 3))
+  println("The new string after repetition: " + substringRep("string", 3, 0))
+
+
 
 }
