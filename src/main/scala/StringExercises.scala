@@ -369,6 +369,91 @@ object StringExercises extends App {
   println("The new string after repetition: " + substringRep("string", 0, 3))
   println("The new string after repetition: " + substringRep("string", 3, 0))
 
+  // Exercise 37.
 
+  def beforeAndAfterChar(string: String, char: Char): Boolean = {
+    println(s"The given strings is: $string, specified character is: $char")
+    val len: Int = string.length
+    var found: Boolean = true
+    if (len < 3 || !char.isValidChar) false
+    else {
+      for (i <- 1 until len - 1) {
+        if (string(i) == char) {
+          if (string(i - 1) == string(i + 1)) {
+            found = true
+          } else {
+            found = false
+          }
+        }
+      }
+      found
+    }
+  }
+
+  println("The before and after # both characters are same in the said string: " + beforeAndAfterChar("moon#night", '#'))
+  println("The before and after # both characters are same in the said string: " + beforeAndAfterChar("bat#$#ball", '$'))
+  println("The before and after # both characters are same in the said string: " + beforeAndAfterChar("bat#$ball", '$'))
+
+  // Exercise 39.
+
+  def everyCharDouble(string: String): String = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    @tailrec
+    def acc(string: String, new_word: String, charPosition: Int): String = {
+      if (charPosition == len) new_word
+      else acc(string, new_word + string(charPosition) + string(charPosition), charPosition + 1)
+    }
+    acc(string, "", 0)
+  }
+
+  println("The new string is: " + everyCharDouble("welcome"))
+
+  // Exercise 40.
+
+  def mixedStrings(string1: String, string2: String): String = {
+    println(s"The given strings are: $string1 and $string2")
+    val len1: Int = string1.length
+    val len2: Int = string2.length
+    var new_string: String = ""
+    if (len1 < len2) {
+      for (i <- 0 until len1) {
+        new_string = new_string + string1(i) + string2(i)
+      }
+      for (j <- len1 until len2) {
+        new_string = new_string + string2(j)
+      }
+    } else {
+      for (i <- 0 until len2) {
+        new_string = new_string + string1(i) + string2(i)
+      }
+      for (j <- len2 until len1) {
+        new_string = new_string + string2(j)
+      }
+    }
+    new_string
+  }
+
+  println("The new string is: " + mixedStrings("welcome", "w3resource"))
+  println("The new string is: " + mixedStrings("Omiros", "Trypatsas"))
+
+  // Exercise 41.
+
+  def stringRep(string: String, repChars: Int): Unit = {
+    println(s"The given strings is: $string")
+    println(s"Number of repetition characters and repetition: $repChars")
+    val len: Int = string.length
+    if (len < repChars) println("String cannot be modified")
+    else {
+      @tailrec
+      def acc(string: String, new_string: String, repChars: Int): Unit = {
+        if (repChars > 0) acc(string, new_string + string.substring(0, repChars), repChars - 1)
+        else println(s"The new string is: " + new_string)
+      }
+      acc(string, "", repChars)
+    }
+  }
+
+  stringRep("welcome", 4)
 
 }
