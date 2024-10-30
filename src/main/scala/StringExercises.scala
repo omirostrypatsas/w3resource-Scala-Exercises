@@ -456,4 +456,66 @@ object StringExercises extends App {
 
   stringRep("welcome", 4)
 
+  // Exercise 42.
+
+  def beforeAndAfterString(string: String): String = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    if (len <= 0) "String cannot be modified"
+    else {
+      @tailrec
+      def acc(string: String, position: Int, new_string: String): String = {
+        if (position >= len - 1) new_string
+        else if (string(position).toString.equals(" ") || string(position - 1).toString.equals(" ") || string(position + 1).toString.equals(" ")) {
+          acc(string, position + 1, new_string)
+        }
+        else {
+          acc(string, position + 2, new_string + string(position))
+        }
+      }
+      acc(string, 1, "")
+    }
+  }
+
+  println("The new string is: " + beforeAndAfterString("weablcoabmeab  and ab"))
+
+  // Exercise 43.
+
+  def tripleChar(string: String): Int = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    if (len <= 0) 0
+    else {
+      @tailrec
+      def acc(string: String, position: Int, noOfTriples: Int): Int = {
+        if (position >= len - 1) noOfTriples
+        else if (string(position -1) == string(position) && string(position) == string(position + 1)) acc(string, position + 1, noOfTriples + 1)
+        else acc(string, position + 1, noOfTriples)
+      }
+      acc(string, 1, 0)
+    }
+  }
+
+  println(s"The number of triples in the string is: " + tripleChar("welllcommmmeee"))
+
+  // Exercise 44.
+
+  def isCharHappy(string: String, char: Char): Boolean = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    if (len <= 0) false
+    else {
+      @tailrec
+      def acc(string: String, char: Char, position: Int): Boolean = {
+        if (position >= len - 1) false
+        else if ((string(position) == char) && (string(position -1) == string(position) || string(position) == string(position + 1))) true
+        else acc(string, char, position + 1)
+      }
+      acc(string, char, 1)
+    }
+  }
+
+  println("Is z happy in the said string: " + isCharHappy("azzlea", 'z'))
+  println("Is f happy in the said string: " + isCharHappy("abcfdkefg", 'f'))
+
 }
