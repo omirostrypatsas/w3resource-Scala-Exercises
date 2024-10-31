@@ -1,3 +1,4 @@
+import javax.swing.text.Position
 import scala.annotation.tailrec
 
 object StringExercises extends App {
@@ -517,5 +518,60 @@ object StringExercises extends App {
 
   println("Is z happy in the said string: " + isCharHappy("azzlea", 'z'))
   println("Is f happy in the said string: " + isCharHappy("abcfdkefg", 'f'))
+
+  // Exercise 45.
+
+  def sumOfString(string: String): Int = {
+    println(s"The given strings is: $string")
+    val len: Int = string.length
+    if (len <= 0) 0
+    else {
+      var temp: String = ""
+      @tailrec
+      def acc(string: String, position: Int, total: Int, temp: String): Int = {
+        if (position == len) total
+        else if (position == len - 1 && string(position).isDigit) acc(string, position + 1, total + (temp + string(position).toString).toInt, temp + string(position).toString)
+        else if (string(position).isDigit && !string(position + 1).isDigit) acc(string, position + 1, total + (temp + string(position).toString).toInt, "")
+        else if (!string(position).isDigit && temp == "") acc(string, position + 1, total, "")
+        else acc(string, position + 1, total, temp + string(position).toString)
+      }
+      acc(string, 0, 0, temp)
+    }
+  }
+
+  println("The sum of the numbers in the said string is: " + sumOfString("it 15 is25 a 20string"))
+  println("The sum of the numbers in the said string is: " + sumOfString("52525"))
+  println("The sum of the numbers in the said string is: " + sumOfString("it 15 is2 a 20string"))
+
+  // Exercise 46.
+
+  def noOfSubstringsEqual(string: String, substring1: String, substring2: String): Boolean = {
+    println(s"The given strings is: $string")
+    val lenString: Int = string.length
+    val lenSubstring1: Int = substring1.length
+    val lenSubstring2: Int = substring2.length
+    val biggerSubstring = if (lenSubstring1.compareTo(lenSubstring2) > 0) lenSubstring1 else lenSubstring2
+    if (lenString <= 0 || lenSubstring1 <= 0 || lenSubstring2 <= 0 || lenSubstring1 > lenString || lenSubstring2 > lenString) false
+    else {
+      @tailrec
+      def acc(string: String, substring1: String, substring2: String, position: Int, appearanceSubstring1: Int, appearanceSubstring2: Int): Boolean = {
+        if (position > lenString - biggerSubstring) {
+          if ((biggerSubstring == lenSubstring1) && (position <= lenString - lenSubstring2) && (string.substring(position, position + lenSubstring2) == substring2)) {
+            acc(string, substring1, substring2, position + 1, appearanceSubstring1, appearanceSubstring2 + 1)
+          } else if ((biggerSubstring == lenSubstring2) && (position <= lenString - lenSubstring1) && (string.substring(position, position + lenSubstring1) == substring1)) {
+              acc(string, substring1, substring2, position + 1, appearanceSubstring1 + 1, appearanceSubstring2)
+          } else appearanceSubstring1 == appearanceSubstring2
+        }
+        else if (string.substring(position, position + lenSubstring1) == substring1 && string.substring(position, position + lenSubstring2) == substring2) acc(string, substring1, substring2, position + 1, appearanceSubstring1 + 1, appearanceSubstring2 + 1)
+        else if (string.substring(position, position + lenSubstring1) == substring1) acc(string, substring1, substring2, position + 1, appearanceSubstring1 + 1, appearanceSubstring2)
+        else if (string.substring(position, position + lenSubstring2) == substring2) acc(string, substring1, substring2, position + 1, appearanceSubstring1, appearanceSubstring2 + 1)
+        else acc(string, substring1, substring2, position + 1, appearanceSubstring1, appearanceSubstring2)
+      }
+      acc(string, substring1, substring2, 0, 0, 0)
+    }
+  }
+
+  println("Are the appearance of 'the' and 'is' equal? " + noOfSubstringsEqual("Thisisthethesis", "the", "is"))
+  println("Are the appearance of 'the' and 'is' equal? " + noOfSubstringsEqual("Thisisthethes", "the", "is"))
 
 }
